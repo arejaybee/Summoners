@@ -13,10 +13,9 @@ public class Minotaur : Character {
         hp = 10;
         move = 5;
         attkRange = 1;
-        attk = 4;
+        attk = 5;
         defense = 0;
-        cost = 10;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move;
+        cost = 15;
         canMove = true;
     }
 }

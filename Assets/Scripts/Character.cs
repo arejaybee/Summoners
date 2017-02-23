@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
     public int stun = 0;
     public Material theMaterial;
     public int cost;
+    public string extraDescription = "";
 	// Use this for initialization
 	void Start ()
     {
@@ -30,18 +31,18 @@ public class Character : MonoBehaviour
             hp = 1;
         }
         hp = maxHp;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: "+move;
+        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: "+move+extraDescription;
         canMove = true;
     }
 
     // Update is called once per frame
-    void Update ()
+    protected virtual void Update ()
     {
         if (hp <= 0f)
         {
             Destroy(this.gameObject);
         }
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move;
+        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move+extraDescription;
         if(stun > 0)
         {
             description = description + "\nStun for: " + Mathf.CeilToInt((float)(stun-1) / 2) + " rounds";
@@ -59,7 +60,7 @@ public class Character : MonoBehaviour
         if (char2.playerNumber != 0)
         {
             //char2.hp = char2.hp - Mathf.Max(attk - char2.defense, 1); //original intention is to always do a min of 1 damage
-            char2.hp = char2.hp - Mathf.Max( Mathf.Abs(attk - char2.defense) , 0); //dont do negative damage, but try to attack!
+            char2.hp = char2.hp - Mathf.Max(attk - char2.defense , 0); //dont do negative damage, but try to attack!
 
             //When a Gorgan is hit by a creature, that creature is stunned for 1 round
             if(char2.name == "Gorgon" && name != "Gorgon")
@@ -108,7 +109,11 @@ public class Character : MonoBehaviour
     {
         if(canMove)
         {
-            this.GetComponent<MeshRenderer>().material = theMaterial;
+            this.GetComponent<MeshRenderer>().material = GameObject.Find("Player" + playerNumber.ToString()).GetComponent<MeshRenderer>().material;
+        }
+        else if(stun != 0)
+        {
+            GetComponent<MeshRenderer>().material.color = Color.white;
         }
         else
         {

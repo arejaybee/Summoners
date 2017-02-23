@@ -15,20 +15,15 @@ public class Dragon : Character
         attkRange = 2;
         attk = 15;
         defense = 3;
-        cost = 50;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move+ "\nSpecial: -10 mana per turn\nDies at 0 mana";
+        cost = 75;
+        extraDescription = "\n-30 mana per turn\nDies at 0 mana";
 
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (hp <= 0f)
-        {
-            Destroy(this.gameObject);
-        }
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move+"\nSpecial: -10 mana per turn\nDies at 0 mana";
-
+        base.Update();
         //if a player has 0 mana, dragons die
         Mana[] m = FindObjectsOfType<Mana>();
         for (int i = 0; i < m.Length; i++)
@@ -41,7 +36,6 @@ public class Dragon : Character
                 }
             }
         }
-        checkColorOfPlayer();
     }
 
     //dragons drain a player's mana at the end of a turn
@@ -52,7 +46,7 @@ public class Dragon : Character
         {
             if (m[i].playerNumber == playerNumber)
             {
-                m[i].manaValue = m[i].manaValue - 10;
+                m[i].manaValue = m[i].manaValue - 30;
             }
         }
     }

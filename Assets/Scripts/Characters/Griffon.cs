@@ -14,7 +14,6 @@ public class Griffon : Character {
         attk = 4;
         defense = 0;
         cost = 3;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move;
         canMove = true;
 
     }

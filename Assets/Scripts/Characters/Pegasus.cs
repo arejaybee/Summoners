@@ -15,8 +15,7 @@ public class Pegasus : Character {
         attkRange = 1;
         attk = 7;
         defense = 1;
-        cost = 15;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange+"\n Move: "+move;
+        cost = 20;
         canMove = true;
     }
 }

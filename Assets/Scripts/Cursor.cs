@@ -44,7 +44,7 @@ public class Cursor : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.X) && characterSelected == true)
             {
                 //move the cahracter back to where they were and note we no longer have a selected character
-                selectedChar.transform.localPosition = new Vector3(orgX, orgY, orgZ);
+                selectedChar.transform.position = new Vector3(orgX, orgY, orgZ);
                 characterSelected = false;
                 
                 deleteMovementTiles();
@@ -80,12 +80,12 @@ public class Cursor : MonoBehaviour {
             if (chars[i].playerNumber != (selectedChar.playerNumber))
             {
                 //if they are within range of the selected character
-                if ((chars[i].transform.localPosition.x == transform.position.x) && Mathf.Abs(chars[i].transform.localPosition.z - transform.position.z) <= selectedChar.attkRange)
+                if ((chars[i].transform.position.x == transform.position.x) && Mathf.Abs(chars[i].transform.position.z - transform.position.z) <= selectedChar.attkRange)
                 {
                     //deal damage
                     selectedChar.fight(chars[i]);
                 }
-                if ((chars[i].transform.localPosition.z == transform.position.z) && Mathf.Abs(chars[i].transform.localPosition.x - transform.position.x) <= selectedChar.attkRange)
+                if ((chars[i].transform.position.z == transform.position.z) && Mathf.Abs(chars[i].transform.position.x - transform.position.x) <= selectedChar.attkRange)
                 {
                     //deal damage
                     selectedChar.fight(chars[i]);
@@ -139,9 +139,9 @@ public class Cursor : MonoBehaviour {
                     characterSelected = true;
 
                     //save the original cooridinates incase we cancel the movement
-                    orgX = transform.localPosition.x;
-                    orgY = chars[i].transform.localPosition.y;
-                    orgZ = transform.localPosition.z;
+                    orgX = transform.position.x;
+                    orgY = chars[i].transform.position.y;
+                    orgZ = transform.position.z;
 
                     //displays all of the possible spaces that character can move to
                     for (int k = (int)(0 - selectedChar.move); k <= selectedChar.move; k++)

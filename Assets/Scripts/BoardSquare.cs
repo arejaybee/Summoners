@@ -107,7 +107,6 @@ public class BoardSquare : MonoBehaviour {
         //set canMove to true
         for (int i = 0; i < chars.Length; i++)
         {
-            print(chars[2].stun);
             if (chars[i].stun > 1)
             {
                 chars[i].stun = chars[i].stun - 1;

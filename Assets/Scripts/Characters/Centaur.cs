@@ -13,19 +13,10 @@ public class Centaur : Character {
         move = 4;
         attkRange = 2;
         attk = 5;
-        defense = 1;
-        cost = 15;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move+"Special: Ignores defense";
+        defense = 0;
+        cost = 20;
+        extraDescription = "\nIgnores Defences";
         canMove = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (hp <= 0f)
-        {
-            Destroy(this.gameObject);
-        }
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move + "\nSpecial: Ignores defense";
     }
 
     public override void fight(Character char2)

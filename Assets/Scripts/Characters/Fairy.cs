@@ -15,22 +15,8 @@ public class Fairy : Character {
         attk = 1;
         defense = 0;
         cost = 2;
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move+"\nSpecial: +3 mana per turn";
+        extraDescription = "\n+3 mana per turn";
         canMove = true;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (hp <= 0f)
-        {
-            Destroy(this.gameObject);
-        }
-        description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: " + move + "\nSpecial: +3 mana per turn";
-        if (stun > 0)
-        {
-            description = description + "\nStun for: " + Mathf.CeilToInt((float)(stun - 1) / 2) + " rounds";
-        }
-        checkColorOfPlayer();
     }
 
     //Fairies add 3 to the player's mana pool each turn
