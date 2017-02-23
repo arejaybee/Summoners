@@ -34,8 +34,11 @@ public class Cursor2 : MonoBehaviour {
                 checkCancel();
             }
             //if the player hits z, try to summon a thing
-            if (Input.GetKeyDown(KeyCode.Z))
+            //added enter as confirm here as well because people seem to instictively hit enter to pick a thing
+            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
             {
+                //this check is just incase the player somehow hits down and z fast enough
+                //to go out of bounds and try to confirm. Lets avoid that error
                 if (transform.position.z <= MAX_Z && transform.position.z >= MIN_Z)
                 {
                     checkConfirm();
