@@ -35,7 +35,7 @@ public class Cursor2 : MonoBehaviour {
             }
             //if the player hits z, try to summon a thing
             //added enter as confirm here as well because people seem to instictively hit enter to pick a thing
-            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 //this check is just incase the player somehow hits down and z fast enough
                 //to go out of bounds and try to confirm. Lets avoid that error
