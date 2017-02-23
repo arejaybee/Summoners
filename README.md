@@ -4,10 +4,15 @@ clone and play!
 
 Controls:
 Arrow keys to move
+
 Z - select
+
 X - cancel
+
 E - end turn
+
 Space/Enter - open summon menue
+
 
 How to play:
 Each turn you are gain 6 mana.
