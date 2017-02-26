@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fairy : Character {
-    public const int FAIRY_MANA = 2;
+    public const int FAIRY_MANA = 3;
 	// Use this for initialization
 	void Start ()
     {

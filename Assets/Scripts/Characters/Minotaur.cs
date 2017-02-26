@@ -9,11 +9,11 @@ public class Minotaur : Character {
     void Start()
     {
         name = "Minotaur";
-        maxHp = 10;
-        hp = 10;
-        move = 5;
+        maxHp = 12;
+        hp = 12;
+        move = 4;
         attkRange = 1;
-        attk = 5;
+        attk = 6;
         defense = 0;
         cost = 15;
         canMove = true;

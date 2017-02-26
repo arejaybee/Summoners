@@ -10,7 +10,7 @@ public class Centaur : Character {
         name = "Centaur";
         maxHp = 10;
         hp = 10;
-        move = 4;
+        move = 5;
         attkRange = 2;
         attk = 5;
         defense = 0;

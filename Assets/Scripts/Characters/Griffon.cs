@@ -11,7 +11,7 @@ public class Griffon : Character {
         hp = 7;
         move = 5;
         attkRange = 1;
-        attk = 4;
+        attk = 3;
         defense = 0;
         cost = 3;
         canMove = true;
