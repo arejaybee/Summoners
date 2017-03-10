@@ -22,6 +22,8 @@ public class Character : MonoBehaviour
     public Material theMaterial;
     public int cost;
     public string extraDescription = "";
+	protected bool piercing;
+	protected bool counterAttack;
 	// Use this for initialization
 	void Start ()
     {
@@ -33,6 +35,8 @@ public class Character : MonoBehaviour
         hp = maxHp;
         description = name + "\n HP: " + hp + "/" + maxHp + "\n Attk: " + attk + " Def: " + defense + "\n Attk Range: " + attkRange + "\n Move: "+move+extraDescription;
         canMove = true;
+		counterAttack = false;
+		piercing = false;
     }
 
     // Update is called once per frame
@@ -59,22 +63,63 @@ public class Character : MonoBehaviour
     {
         if (char2.playerNumber != 0)
         {
-            //char2.hp = char2.hp - Mathf.Max(attk - char2.defense, 1); //original intention is to always do a min of 1 damage
-            char2.hp = char2.hp - Mathf.Max(attk - char2.defense , 0); //dont do negative damage, but try to attack!
-
+			if (piercing)
+			{
+				char2.hp -= attk;
+			}
+			else
+			{
+				char2.hp = char2.hp - Mathf.Max(attk - char2.defense, 0); //dont do negative damage, but try to attack!
+			}
             //When a Gorgan is hit by a creature, that creature is stunned for 1 round
             if(char2.name == "Gorgon" && name != "Gorgon")
             {
                 stun = 3;
             }
-        }
+
+			//players get some mana back if their unit dies
+			if (char2.hp <= 0)
+			{
+				GameObject.Find("Summoner" + char2.playerNumber).transform.FindChild("Mana").GetComponent<Mana>().manaValue += (int)(char2.cost / 2);
+			}
+			if(char2.hp > 0 && char2.counterAttack)
+			{
+				char2.counter(this);
+			}
+		}
+
     }
 
-    /*
+	/*
+	 * This is speciffically for units that may attack back
+	 * has to be separate from just calling fight again, or you get stack overflow
+	 * and recursion until one characcter dies....
+	 */ 
+	public void counter(Character char2)
+	{
+		if (char2.playerNumber != 0)
+		{
+			//char2.hp = char2.hp - Mathf.Max(attk - char2.defense, 1); //original intention is to always do a min of 1 damage
+			char2.hp = char2.hp - Mathf.Max(attk - char2.defense, 0); //dont do negative damage, but try to attack!
+
+			//When a Gorgan is hit by a creature, that creature is stunned for 1 round
+			if (char2.name == "Gorgon" && name != "Gorgon")
+			{
+				stun = 3;
+			}
+		}
+		//players get some mana back if their unit dies
+		if (char2.hp <= 0)
+		{
+			GameObject.Find("Summoner" + char2.playerNumber).transform.FindChild("Mana").GetComponent<Mana>().manaValue += (int)(char2.cost / 2);
+		}
+	}
+
+	/*
      * A function to set the playerNum value to either 1 or 2
      * Could, in the future, be used to steal other player's units (A vampire summon?)
      */
-    public void setPlayerNum(int num)
+	public void setPlayerNum(int num)
     {
         playerNumber = num;
     }

@@ -9,11 +9,11 @@ public class Mana : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        manaValue = 0;
-        if (playerNumber == 1)
-        {
-            manaValue = 6;
-        }
+        manaValue = 5;
+		if(playerNumber == 1)
+		{
+			manaValue += (int)(manaValue/3);
+		}
 
 	}
 	

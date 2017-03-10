@@ -23,10 +23,9 @@ public class Cursor : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
         isMoving = false;
-        //only move this cursor if we are not on the summoning screen
-        if (!FindObjectOfType<Cursor2>().onSummonScreen)
+        //only move this cursor if we are not attempting a summon
+        if (!FindObjectOfType<Cursor2>().tryingToSummon)
         {
             //if a player hits z, try to select a character (only if you havent already)
             if (Input.GetKeyDown(KeyCode.Z) && characterSelected == false)

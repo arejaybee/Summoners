@@ -15,7 +15,7 @@ public class Camera : MonoBehaviour
     void Update()
     {
          Mana[] m = FindObjectsOfType<Mana>();
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !FindObjectOfType<Cursor2>().onSummonScreen && !FindObjectOfType<Cursor>().characterSelected)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !FindObjectOfType<Cursor2>().tryingToSummon && !FindObjectOfType<Cursor>().characterSelected)
         {
             moveToSummonScreen();
         }

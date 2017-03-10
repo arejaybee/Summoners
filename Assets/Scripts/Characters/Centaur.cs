@@ -18,15 +18,4 @@ public class Centaur : Character {
         extraDescription = "\nIgnores Defences";
         canMove = true;
     }
-
-    public override void fight(Character char2)
-    {
-        char2.hp = char2.hp - attk;
-
-        //When a Gorgan is hit by a creature, that creature is stunned for 1 round
-        if (char2.name == "Gorgon" && name != "Gorgon")
-        {
-            stun = 3;
-        }
-    }
 }

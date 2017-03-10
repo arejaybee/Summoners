@@ -88,7 +88,7 @@ public class BoardSquare : MonoBehaviour {
         }
 
         //add mana to the new player's pool
-        m[manaNum].manaValue = m[manaNum].manaValue + 6;
+        m[manaNum].manaValue = m[manaNum].manaValue + Mathf.Max(1,(int)(m[manaNum].manaValue/3));
 
         //move the cursor over to the new summoner
         GameObject.Find("Cursor").transform.position = new Vector3(GameObject.Find(sumName).transform.localPosition.x, GameObject.Find("Cursor").transform.position.y, GameObject.Find(sumName).transform.localPosition.z);
